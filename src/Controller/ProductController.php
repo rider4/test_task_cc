@@ -3,8 +3,7 @@
 namespace App\Controller;
 
 use App\Dto\Product\QueryDto;
-use App\Dto\Product\Response\OfferDto;
-use App\Dto\Product\Response\PriceDto;
+use App\Service\ProductSearcher;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,10 +14,10 @@ use Symfony\Component\Validator\Validation;
 
 class ProductController extends AbstractController
 {
-    #[Route('/products', name: 'app_products', methods: Request::METHOD_GET, format: 'json')]
+    #[Route('/products', name: 'app_products', methods: Request::METHOD_GET/*, format: 'json'*/)]
     public function index(
+        ProductSearcher                                                                     $productSearcher,
         #[MapQueryString(validationFailedStatusCode: Response::HTTP_BAD_REQUEST,)] QueryDto $dto = new QueryDto(),
-
     ): JsonResponse
     {
         $simplifiedViolations = $this->validInputDto($dto);
@@ -26,16 +25,7 @@ class ProductController extends AbstractController
             return $this->json(['errors' => $simplifiedViolations], Response::HTTP_BAD_REQUEST);
         }
 
-        $res = [
-            (new OfferDto('sku', 'name', 'category', (new PriceDto(100, 200, '2%'))))
-        ];
-        return $this->json($res);
-
-
-        return $this->json([
-            'message' => 'Welcome to your new controller!',
-            'path' => 'src/Controller/ProductController.php',
-        ]);
+        return $this->json($productSearcher->search($dto));
     }
 
     /**

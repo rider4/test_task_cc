@@ -10,6 +10,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
 class Product
 {
+    public const CATEGORY_BOOTS = 'boots';
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -27,7 +29,7 @@ class Product
 
     #[ManyToOne(targetEntity: Category::class)]
     #[ORM\JoinColumn(nullable: false)]
-    private string $category;
+    private Category $category;
 
     public function getId(): ?int
     {
@@ -70,15 +72,13 @@ class Product
         return $this;
     }
 
-    public function getCategory(): ?string
+    public function getCategory(): Category
     {
         return $this->category;
     }
 
-    public function setCategory(string $category): static
+    public function setCategory(Category $category): void
     {
         $this->category = $category;
-
-        return $this;
     }
 }

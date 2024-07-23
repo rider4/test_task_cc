@@ -6,6 +6,10 @@
 parameters:
 
 services:
+    _instanceof:
+        App\Service\Discount\Handler\DiscountHandlerInterface:
+            tags: [ 'app.discount_handler_tag' ]
+
     # default configuration for services in *this* file
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.
@@ -19,6 +23,8 @@ services:
             - '../src/DependencyInjection/'
             - '../src/Entity/'
             - '../src/Kernel.php'
+            - '../src/Dto/'
 
-    # add more service definitions when explicit configuration is needed
-    # please note that last definitions always *replace* previous ones
+    App\Service\Discount\Manager:
+        arguments:
+            -  !tagged_iterator app.discount_handler_tag
