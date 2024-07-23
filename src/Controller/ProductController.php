@@ -32,7 +32,7 @@ class ProductController extends AbstractController
      * @param QueryDto $dto
      * @return array
      */
-    public function validInputDto(QueryDto $dto): array
+    private function validInputDto(QueryDto $dto): array
     {
         $validator = Validation::createValidatorBuilder()
             ->addMethodMapping('lazyLoadValidatorMetadata')

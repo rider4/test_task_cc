@@ -13,6 +13,6 @@ class DiscountHandlerByCategory implements DiscountHandlerInterface
 
     public function getDiscountAmount(): float
     {
-        return 30;
+        return 30.0;
     }
 }

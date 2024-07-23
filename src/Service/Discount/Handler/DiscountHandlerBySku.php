@@ -15,6 +15,6 @@ class DiscountHandlerBySku implements DiscountHandlerInterface
 
     public function getDiscountAmount(): float
     {
-        return 15;
+        return 15.0;
     }
 }

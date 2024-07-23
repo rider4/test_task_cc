@@ -55,9 +55,11 @@ class Manager
             }
         }
 
+        $originPrice = $product->getPrice();
+
         return new PriceDto(
-            $product->getPrice(),
-            $this->calculateFinalPrice($product->getPrice(), $maxDiscount),
+            $originPrice,
+            $this->calculateFinalPrice($originPrice, $maxDiscount),
             $maxDiscount ? sprintf('%d%%', $maxDiscount) : null
         );
     }

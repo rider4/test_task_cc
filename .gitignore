@@ -25,3 +25,4 @@
 ###< phpunit/phpunit ###
 
 /.DS_Store
+/.idea
