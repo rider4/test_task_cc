@@ -9,6 +9,10 @@ help:
 	@echo ''
 
 ##Commands:
+##check       Check requirements
+check:
+	@symfony check:requirements || true
+
 ##up          Up & install application
 up:
 	@symfony check:requirements || true
