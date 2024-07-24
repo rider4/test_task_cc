@@ -4,6 +4,7 @@ namespace App\Tests\Service;
 
 use App\Dto\Product\QueryDto;
 use App\Dto\Product\Response\OfferDto;
+use App\Dto\Product\Response\PriceDto;
 use App\Entity\Category;
 use App\Entity\Product;
 use App\Repository\CategoryRepository;
@@ -126,10 +127,18 @@ class ProductSearcherTest extends TestCase
     private function offerListMockProvider(): array
     {
         return [
-            $this->createMock(OfferDto::class),
-            $this->createMock(OfferDto::class),
-            $this->createMock(OfferDto::class),
-            $this->createMock(OfferDto::class),
+            new OfferDto('test_sku1', 'test_name', 'test_category',
+                new PriceDto(1000, 800, '20%')
+            ),
+            new OfferDto('test_sku2', 'test_name', 'test_category',
+                new PriceDto(1000, 800, '20%')
+            ),
+            new OfferDto('test_sku3', 'test_name', 'test_category',
+                new PriceDto(1000, 800, '20%')
+            ),
+            new OfferDto('test_sku4', 'test_name', 'test_category',
+                new PriceDto(1000, 800, '20%')
+            ),
         ];
     }
 

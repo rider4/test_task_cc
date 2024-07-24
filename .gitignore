@@ -7,6 +7,7 @@
 /public/bundles/
 /var/
 /vendor/
+/data/database.sqlite
 ###< symfony/framework-bundle ###
 
 ###> php-cs-fixer/shim ###
