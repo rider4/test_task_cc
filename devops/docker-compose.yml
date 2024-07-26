@@ -1,0 +1,25 @@
+version: '3.3'
+
+services:
+  php:
+    container_name: php_fpm
+    hostname: php-fpm-box
+    build:
+      context: image/php
+      args:
+        - UID
+    env_file:
+      - ./.env
+    environment:
+      PHP_IDE_CONFIG: serverName=${SERVER_NAME}
+    volumes:
+      - ../app/:/var/www:delegated
+    networks:
+      - default
+      - cc-test-app-net
+
+networks:
+  default:
+    driver: bridge
+  cc-test-app-net:
+    external: true # if not created manually run command `docker network create cc-test-app-net`
