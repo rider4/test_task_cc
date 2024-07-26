@@ -7,18 +7,12 @@
 /public/bundles/
 /var/
 /vendor/
-/data/database.sqlite
 ###< symfony/framework-bundle ###
 
 ###> php-cs-fixer/shim ###
 /.php-cs-fixer.php
 /.php-cs-fixer.cache
 ###< php-cs-fixer/shim ###
-
-###> symfony/phpunit-bridge ###
-.phpunit.result.cache
-/phpunit.xml
-###< symfony/phpunit-bridge ###
 
 ###> phpunit/phpunit ###
 /phpunit.xml

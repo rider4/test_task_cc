@@ -65,15 +65,18 @@
     },
     "scripts": {
         "auto-scripts": {
-            "cache:clear": "symfony-cmd",
-            "assets:install %PUBLIC_DIR%": "symfony-cmd"
         },
         "post-install-cmd": [
             "@auto-scripts"
         ],
         "post-update-cmd": [
             "@auto-scripts"
-        ]
+        ],
+        "cache:preparing": [
+            "bin/console cache:clear",
+            "bin/console cache:warmup"
+        ],
+        "test-unit": "phpunit --colors=always tests"
     },
     "conflict": {
         "symfony/symfony": "*"

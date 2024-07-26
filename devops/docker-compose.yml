@@ -4,10 +4,7 @@ services:
   php:
     container_name: php_fpm
     hostname: php-fpm-box
-    build:
-      context: image/php
-      args:
-        - UID
+    image: ${NAME_PREFIX}
     env_file:
       - ./.env
     environment:
