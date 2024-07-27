@@ -5,7 +5,7 @@ namespace App\Dto\Product;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
 
-readonly class QueryDto
+readonly class QueryDto implements RequestDtoInterface
 {
     /**
      * @param string|null $category
@@ -14,10 +14,10 @@ readonly class QueryDto
      * @param int|null $page
      */
     public function __construct(
-        public readonly ?string $category = null,
-        public readonly ?float  $priceLessThan = null,
-        public readonly ?int    $limit = 5,
-        public readonly ?int    $page = 1
+        public ?string $category = null,
+        public ?float  $priceLessThan = null,
+        public ?int    $limit = 5,
+        public ?int    $page = 1
     )
     {
     }

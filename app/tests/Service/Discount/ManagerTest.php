@@ -16,7 +16,7 @@ class ManagerTest extends TestCase
 {
     public function testCalculateDiscountsForProducts()
     {
-        $expectedOfferDtos = $this->offerDataProvider();
+        $expectedOfferDtoList = $this->offerDataProvider();
         $productList = $this->productDataProvider();
         $service = new Manager($this->discountDataProvider());
 
@@ -24,7 +24,7 @@ class ManagerTest extends TestCase
 
         $this->assertCount(4, $offerDtoList);
 
-        foreach ($expectedOfferDtos as $i => $offerDto) {
+        foreach ($expectedOfferDtoList as $i => $offerDto) {
             $this->assertEquals($offerDto, $offerDtoList[$i]);
         }
     }
