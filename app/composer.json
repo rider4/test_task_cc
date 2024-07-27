@@ -72,11 +72,11 @@
         "post-update-cmd": [
             "@auto-scripts"
         ],
-        "cache:preparing": [
+        "app:cache:preparing": [
             "bin/console cache:clear",
             "bin/console cache:warmup"
         ],
-        "test-unit": "phpunit --colors=always tests"
+        "app:test-unit": "phpunit --colors=always tests"
     },
     "conflict": {
         "symfony/symfony": "*"

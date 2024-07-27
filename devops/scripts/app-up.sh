@@ -41,7 +41,7 @@ $WINPTY docker-compose --project-directory ${DEVOPS_DIR} -f ${DEVOPS_DIR}/docker
 
 echo -e "\n${GREEN}Installing dependencies${RESET}"
 $WINPTY docker-compose --project-directory ${DEVOPS_DIR} -f ${DEVOPS_DIR}/docker-compose.yml -p $NAME_PREFIX  \
-  exec php sh -c "composer cache:preparing"
+  exec php sh -c "composer app:cache:preparing"
 
 echo -e "\n${GREEN}Setup DB${RESET}"
 $WINPTY docker-compose --project-directory ${DEVOPS_DIR} -f ${DEVOPS_DIR}/docker-compose.yml -p $NAME_PREFIX  \
